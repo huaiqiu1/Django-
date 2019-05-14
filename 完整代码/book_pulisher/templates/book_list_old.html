@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>展示书籍</title>
+    </head>
+    <body>
+        <h3>ALL Books   <a href="/add_book/">添加书籍</a></h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>title</th>
+                    <th>publisher</th>
+                    <th>删除</th>
+                    <th>编辑</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in all_book %}
+                    <tr>
+                        <td>{{ i.id }}</td>
+                        <td>{{ i.title }}</td>
+                        <td>{{ i.publisher.name }}</td><!--外键通过id查询出版社名称-->
+                        <td>
+                            <a href="/delete_book/?id={{ i.id }}&&publisher_id={{ i.publisher.id }}">删除</a>
+                        </td>
+                        <td>
+                            <a href="/edit_book/?id={{ i.id }}&&publisher_id={{ i.publisher.id }}">编辑</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>
