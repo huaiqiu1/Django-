@@ -11,28 +11,30 @@ django版本更换2.2
 
 
 ```
-     function changeAllState(tableId,state){
-            table = $("#"+tableId);
-            table.dataTable().fnDestroy();
-            var userids=table[0].getElementsByTagName("input");
-            var urls = new Array()
-            var trs = new Array()
-            for(var i=1;i<userids.length;i++){
-                if(userids[i].checked){
-                    var tr=$("#"+userids[i].value)
-                    trs[trs.length] = tr
-                    var tbody=tr.parent();
-                    var table = tbody.parent();                    
-                    var url = "/test/index.php/main/changeState?cardid="+userids[i].value+"&state="+state;
-                    urls[urls.length] = url;                    
-                }
-                
-            }
-            for(var i=0;i<trs.length;i++){
-                trs[i].remove();
-            }
-            reload(table);
-            request(urls,0);
-        }
+    $.ajax({
+			url: "http://localhost/api/get_hierarchy_structure",  // 请求地址
+			type: 'GET',
+			dataType: 'json',
+			success: function (data) {
+				data0 = data['points0'].length < data['points1'].length ? data['points0']:
+                            data['points1'].length < data['points2'].length?data['points1']: data['points2']
+				data2 = data['points0'].length > data['points1'].length ? data['points0']:
+                            data['points1'].length > data['points2'].length?data['points1']: data['points2']
+				if (data['points0'].length!=data0.length && data['points0'].length!=data2.length){
+					data1 = data['points0']
+				}
+				else{
+					if (data['points1'].length!=data0.length && data['points1'].length!=data2.length){
+						data1 = data['points1']
+					}
+					else{
+						data1 = data['points2']
+					}
+				}
+				drawgraph(data0,data1,data2);
+				drawtable(data0,data1,data2);
+				$('#loadingModal').modal("hide");
+			}
+		}); 
         
 ```
