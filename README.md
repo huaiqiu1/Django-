@@ -11,30 +11,15 @@ django版本更换2.2
 
 
 ```
-                 $.ajax(
-			url: "http://localhost/api/get_hierarchy_structure",  // 请求地址
-			type: 'GET',
-			dataType: 'json',
-			success: function (data) {
-				data0 = data['points0'].length < data['points1'].length ? data['points0']:
-                            data['points1'].length < data['points2'].length?data['points1']: data['points2']
-				data2 = data['points0'].length > data['points1'].length ? data['points0']:
-                            data['points1'].length > data['points2'].length?data['points1']: data['points2']
-				if (data['points0'].length!=data0.length && data['points0'].length!=data2.length){
-					data1 = data['points0']
-				}
-				else{
-					if (data['points1'].length!=data0.length && data['points1'].length!=data2.length){
-						data1 = data['points1']
-					}
-					else{
-						data1 = data['points2']
-					}
-				}
-				drawgraph(data0,data1,data2);
-				drawtable(data0,data1,data2);
-				$('#loadingModal').modal("hide");
-			}
-		 }); 
+  public function get_uploadrecord_list($case){
+		$sql = "SELECT jz_uploadrecord_info_id, jz_uploadrecord_info_uploadoriginname, 
+		       jz_uploadrecord_info_uploaddata 
+		FROM jz_uploadrecord_info WHERE jz_uploadrecord_info_caseid = '{$case['id']}'";
+		$res = $this->db->query($sql);
+		$list = $res->result_array();
+		$data['list']=$list;
+		// var_dump($list);
+		return $data;
+	}
         
 ```
