@@ -8,3 +8,18 @@ Django学习记录
 
 django版本更换2.2
 完整代码已上传
+
+
+```
+        function request(urls,i){
+            if(urls.length>i){
+                $.ajax({
+                    url:urls[i],
+                    type:'GET',
+                    success:function(data){
+                        request(urls,i+1);
+                    }
+                });
+            }
+
+```
