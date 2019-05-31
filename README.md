@@ -11,15 +11,28 @@ django版本更换2.2
 
 
 ```
-        success: function (data) {
-                $(that).siblings('.spinner').html(''); 
-                var tbody = $('<tbody></tbody>');
-                var tr_excel = $('<tr><td>上传文件字段</td></tr>');
-                var tr_db = $('<tr><td>标准字段</td></tr>');
-                $('.pre-table').empty();
-                var select = $('<select ><option value="-1">无/不上传</option></select>');
-                $.each(data.db, function (i, val) {
-                    var option = $('<option value="' + i + '">' + val + '</option>');
-                    $(select).append(option);
-                });
+     function changeAllState(tableId,state){
+            table = $("#"+tableId);
+            table.dataTable().fnDestroy();
+            var userids=table[0].getElementsByTagName("input");
+            var urls = new Array()
+            var trs = new Array()
+            for(var i=1;i<userids.length;i++){
+                if(userids[i].checked){
+                    var tr=$("#"+userids[i].value)
+                    trs[trs.length] = tr
+                    var tbody=tr.parent();
+                    var table = tbody.parent();                    
+                    var url = "/test/index.php/main/changeState?cardid="+userids[i].value+"&state="+state;
+                    urls[urls.length] = url;                    
+                }
+                
+            }
+            for(var i=0;i<trs.length;i++){
+                trs[i].remove();
+            }
+            reload(table);
+            request(urls,0);
+        }
+        
 ```
