@@ -11,15 +11,15 @@ django版本更换2.2
 
 
 ```
-  public function get_uploadrecord_list($case){
+         public function get_uploadrecord_list($case){
 		$sql = "SELECT jz_uploadrecord_info_id, jz_uploadrecord_info_uploadoriginname, 
-		       jz_uploadrecord_info_uploaddata 
+		        jz_uploadrecord_info_uploaddata 
 		FROM jz_uploadrecord_info WHERE jz_uploadrecord_info_caseid = '{$case['id']}'";
 		$res = $this->db->query($sql);
 		$list = $res->result_array();
 		$data['list']=$list;
 		// var_dump($list);
 		return $data;
-	}
+	 }
         
 ```
