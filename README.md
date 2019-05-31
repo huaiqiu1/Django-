@@ -11,7 +11,7 @@ django版本更换2.2
 
 
 ```
-    $.ajax({
+                 $.ajax(
 			url: "http://localhost/api/get_hierarchy_structure",  // 请求地址
 			type: 'GET',
 			dataType: 'json',
@@ -35,6 +35,6 @@ django版本更换2.2
 				drawtable(data0,data1,data2);
 				$('#loadingModal').modal("hide");
 			}
-		}); 
+		 }); 
         
 ```
