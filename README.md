@@ -11,39 +11,40 @@ django版本更换2.2
 
 
 ```
-       public function get_single_stat($card) {
-		$sql = "SELECT `jz_doublecard_info_oppoaccount`, `jz_doublecard_info_intotal`,jz_doublecard_info_incount`,  
-		       `jz_doublecard_info_inmax`, `jz_doublecard_info_inmedian`, `jz_doublecard_info_inaverage`,    
-		       `jz_doublecard_info_outtotal`, `jz_doublecard_info_outcount`, `jz_doublecard_info_outmax`, 
-		       `jz_doublecard_info_outmedian`, 
-		       `jz_doublecard_info_outaverage`,`jz_doublecard_info_inshengoucount`+
-		       `jz_doublecard_info_outshengoucount` AS 	 `jz_doublecard_info_shengoucount`, 
-		       `jz_doublecard_info_infanlicount`+`jz_doublecard_info_outfanlicount` AS 
-		       `jz_doublecard_info_fanlicount` FROM `jz_doublecard_info` WHERE 
-		       `jz_doublecard_info_currentaccount` = '{$card}'";
-		$res = $this->db->query($sql);
-		$list_a2b = $res->result_array();
-		$sql = "SELECT `jz_bankwater_qvzaoinfo_transcatdata`, `jz_bankwater_qvzaoinfo_transcatamount`, 
-		       `jz_bankwater_qvzaoinfo_balance`, `jz_bankwater_qvzaoinfo_inoroutsign`, 
-		       `jz_bankwater_qvzaoinfo_oppoaccount`,  `jz_bankwater_qvzaoinfo_abstract`, 
-		       `jz_bankwater_qvzaoinfo_transactbankname` FROM `jz_bankwater_qvzaoinfo` WHERE 
-		       `jz_bankwater_qvzaoinfo_productcode` = '{$card}'";
-		$res = $this->db->query($sql);
-		$list_single = $res->result_array();
-		$sql = "SELECT `jz_cardopen_qvchonginfo_personname` FROM `jz_cardopen_qvchonginfo` WHERE 
-		       `jz_cardopen_qvchonginfo_transcatcardnum` = '{$card}'";
-		$res = $this->db->query($sql);
-		$name = $res->result_array();
-		$sql = "SELECT * FROM `jz_single_day_bankwater_info` WHERE
-		      `jz_single_day_bankwater_info_productcode` = '{$card}'";
-		$res = $this->db->query($sql);
-		$singleday = $res->result_array();
-
-		$data['a2b'] = $list_a2b;
-		$data['single'] = $list_single;
-		$data['card'] = $card;
-		$data['name'] = $name[0]['jz_cardopen_qvchonginfo_personname'];
-		$data['singleday'] = $singleday;
-		return $data;
-	}
+        <ul class="nav navbar-nav" style="top:60px; left: 220px; width: 100%; height: 50px">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    1.案件概要
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#1-1">1-1.资金及人员总体概况</a></li>
+                    <li><a href="#1-2">1-2.银行分布概况</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    2.关键数据统计
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#2-1">2-1.获利对手统计</a></li>
+                    <li><a href="#2-2">2-2.关系人员数统计</a></li>
+                   
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    3.数据分析预测
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#3-1">3-1.申购账户</a></li>
+                    <li><a href="#3-2">3-2.返利账户</a></li>
+                    <li><a href="#3-3">3-3.组织结构</a></li>
+                    <li><a href="#3-4">3-4.扩大调查列表</a></li>
+                </ul>
+            </li>
+            <li><a class="word-export" style="float: right" href="javascript:void(0)"> 导出报告 </a></li>
+        </ul>
 ```
