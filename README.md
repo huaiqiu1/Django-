@@ -11,15 +11,15 @@ django版本更换2.2
 
 
 ```
-        function request(urls,i){
-            if(urls.length>i){
-                $.ajax({
-                    url:urls[i],
-                    type:'GET',
-                    success:function(data){
-                        request(urls,i+1);
-                    }
+        success: function (data) {
+                $(that).siblings('.spinner').html(''); 
+                var tbody = $('<tbody></tbody>');
+                var tr_excel = $('<tr><td>上传文件字段</td></tr>');
+                var tr_db = $('<tr><td>标准字段</td></tr>');
+                $('.pre-table').empty();
+                var select = $('<select ><option value="-1">无/不上传</option></select>');
+                $.each(data.db, function (i, val) {
+                    var option = $('<option value="' + i + '">' + val + '</option>');
+                    $(select).append(option);
                 });
-            }
-
 ```
