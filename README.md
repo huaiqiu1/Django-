@@ -11,15 +11,13 @@ django版本更换2.2
 
 
 ```
-         public function get_uploadrecord_list($case){
-		$sql = "SELECT jz_uploadrecord_info_id, jz_uploadrecord_info_uploadoriginname, 
-		        jz_uploadrecord_info_uploaddata 
-		FROM jz_uploadrecord_info WHERE jz_uploadrecord_info_caseid = '{$case['id']}'";
+         public function get_person_info($jz_person_info_number, $case){		
+		$sql = "SELECT * FROM `jz_person_info` WHERE `jz_person_info_number` = '{$jz_person_info_number}'";
 		$res = $this->db->query($sql);
-		$list = $res->result_array();
-		$data['list']=$list;
-		// var_dump($list);
-		return $data;
+		$person_info = $res->result_array();
+		$sql = "SELECT * FROM `jz_person_more_view` WHERE `jz_person_info_number` = '{$jz_person_info_number}'";
+		$res = $this->db->query($sql);
+		$card_info = $res->result_array();
 	 }
         
 ```
