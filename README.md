@@ -92,6 +92,91 @@ service plumemo.service start
 ```shell
 wget -P /usr/local/plumemo/nginx/conf -N https://raw.githubusercontent.com/byteblogs168/plumemo-deploy/master/nginx.conf
 ```
+### 创建nginx守护进程
+> 使用本脚本自动安装nginx的用户进行此步骤，自行编译或使用apt、yum、pacmen、yarn等安装nginx的用户自行斟酌判断是否需要
+
+```shell
+#!/bin/bash
+# chkconfig: - 85 15
+# description: nginx init tools  
+#上面必须要
+
+# nginx.conf位置
+conf=/usr/local/plumemo/nginx/conf/nginx.conf
+# nginx位置
+bin=/usr/local/plumemo/nginx/sbin/nginx
+# nginx pid位置
+pid=/usr/local/nginx/nginx.pid
+#以上内容根据实际内容填写
+
+SHOW () {
+    if [ $? -eq 0 ];then
+        echo -en "$1 [\e[1;32mOK\e[0m]";echo
+    else
+        echo -en "$1 [\e[1;31mFAIL\e[0m]";echo
+    fi
+}
+
+START () {
+    if [ -f $pid ];then
+        echo "Nginx is running,please use [stop|restart|reload|status]"
+    else
+        $bin && SHOW 'Start nginx'
+    fi
+}
+
+STOP () {
+    if [ -f $pid ];then
+        kill `cat $pid` && SHOW 'Stop nginx'
+    else
+        echo "Nginx is not running,please use [start|restart|status]"
+    fi
+}
+
+RESTART () {
+    kill `cat $pid` && SHOW 'Stop nginx'
+    $bin && SHOW 'Start nginx'
+}
+
+RELOAD () {
+    if [ -f $pid ];then
+        $bin -s reload && SHOW 'Reload nginx'
+    else
+        echo "Nginx is not running,please use [start|status]"
+    fi
+}
+
+STATUS () {
+    if [ -f $pid ];then
+        echo -en "Nginx is \e[1;32mrunning\e[0m";echo
+    else
+        echo -en "Nginx is \e[1;31mdeal\e[0m";echo
+    fi
+}
+
+case $1 in
+    start) START;;
+    stop) STOP;;
+    restart) RESTART;;
+    reload) RELOAD;;
+    status) STATUS;;
+    *) 
+        echo "Please use [start|stop|restart|reload|status]" && exit 1
+    ;;
+esac
+```
+
+### 启动
+```shell
+chmod +x /etc/init.d/nginx
+chkconfig --add /etc/init.d/nginx
+chkconfig nginx on
+
+# 查看是否启动
+service nginx status
+# 或
+systemctl status nginx
+```
 
 ## 备份博客数据
 ![备份.png](https://raw.githubusercontent.com/systemime/my_image/master/QQ%E6%88%AA%E5%9B%BE20200415144132.png)
