@@ -65,17 +65,18 @@ wget https://raw.githubusercontent.com/byteblogs168/plumemo-deploy/master/plumem
 
 ## 安装plumemo管理系统
 ![admin1.png](http://image.byteblogs.com/f9488ff8ea985d73d468f771c60a08b1.png)
-![admin2.png](http://image.byteblogs.com/bba546a5eada5b57e31e3b588e5f19e6.png
+![admin2.png](http://image.byteblogs.com/bba546a5eada5b57e31e3b588e5f19e6.png)
 
 ### 博客启动脚本
 #### v1.1.0版本
 ```
 systemctl start plumemo.service
-```
+
 或者
-```
+
 service plumemo.service start
 ```
+
 #### v1.0.0版本
 1. 添加可执行权限 ```chmod +x deploy.sh```
 2. 执行脚本 ```sh deploy.sh```
