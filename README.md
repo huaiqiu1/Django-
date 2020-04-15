@@ -26,11 +26,16 @@
 
 ## 下载脚本
 • centos7、ubuntu16.04以上建议使用
+```
 # 仅在centos7及ubuntu16.04及以上版本测试成功
 # 可以使用systemctl 或 service 的方式管理博客守护进程
 wget https://raw.githubusercontent.com/byteblogs168/plumemo-deploy/master/plumemo-v1.1.0.sh
+```
 • 通用无守护进程
+```
 wget https://raw.githubusercontent.com/byteblogs168/plumemo-deploy/master/plumemo-v1.0.0.sh
+```
+
 ## 功能介绍
 1. jdk
 2. mysql
@@ -38,33 +43,52 @@ wget https://raw.githubusercontent.com/byteblogs168/plumemo-deploy/master/plumem
 4. 主题
 5. 管理系统
 6. 博客数据库备份
+
 ## 操作步骤
 1. 把脚本上传到服务器（不做介绍）
 2. 添加可执行权限 ```chmod +x plumemo-v1.1.0.sh```
 3. 执行脚本 ```sh plumemo-v1.1.0.sh```
+
 下面您就可以根据你的选择进行安装:
+
 ## 安装jdk,版本:jdk-8u144-linux-x64
 ![QQ截图20200331222233.png](http://image.byteblogs.com/5d457dbe646179af7973fbec46e4c735.png)
+
 ## 安装mysql,版本:5.7.28
 ![QQ截图20200331224800.png](http://image.byteblogs.com/9aaa08107724f72a4476c954b89e7dd0.png)
+
 ## 安装nginx,版本:1.17.9
 ![QQ截图20200331225219.png](http://image.byteblogs.com/6b7bcabe5c1eb82389365609424b0d4e.png)
+
 ## 安装plumemo主题
 ![111.png](http://image.byteblogs.com/7269932fdd7f8ba760b50d8a119a60c0.png)
+
 ## 安装plumemo管理系统
 ![admin1.png](http://image.byteblogs.com/f9488ff8ea985d73d468f771c60a08b1.png)
-![admin2.png](http://image.byteblogs.com/bba546a5eada5b57e31e3b588e5f19e6.png)
+![admin2.png](http://image.byteblogs.com/bba546a5eada5b57e31e3b588e5f19e6.png
+
 ### 博客启动脚本
-v1.1.0版本
+#### v1.1.0版本
+```
 systemctl start plumemo.service
+```
 或者
+```
 service plumemo.service start
-v1.0.0版本
+```
+#### v1.0.0版本
 1. 添加可执行权限 ```chmod +x deploy.sh```
 2. 执行脚本 ```sh deploy.sh```
+
 ![aa.png](http://image.byteblogs.com/321532365639f31b3b9f8ea8be0c6be2.png)
-下载nginx配置文件
-请勿随意修改配置文件内容，严格路径对照
-默认下载位置 /usr/local/plumemo/nginx/conf，若自行安装nginx，请修改路径
+
+## 下载nginx配置文件
+> 请勿随意修改配置文件内容，严格路径对照
+> 默认下载位置 /usr/local/plumemo/nginx/conf，若自行安装nginx，请修改路径
+
+```shell
 wget -P /usr/local/plumemo/nginx/conf -N https://raw.githubusercontent.com/byteblogs168/plumemo-deploy/master/nginx.conf
-备份博客数据
+```
+
+## 备份博客数据
+![备份.png](https://raw.githubusercontent.com/systemime/my_image/master/QQ%E6%88%AA%E5%9B%BE20200415144132.png)
