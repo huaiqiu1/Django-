@@ -1,19 +1,29 @@
 <h1 align="center"><a href="https://github.com/byteblogs168/plumemo" target="_blank">plumemo</a></h1>
+
 > [Plumemo](https://www.plumemo.com/) 是一个轻量、易用、前后端分离的博客系统，为了解除开发人员对后端的束缚，真正做到的一个面向接口开发的博客系统。
+
 <p align="center">
 <a href="#"><img alt="JDK" src="https://img.shields.io/badge/JDK-1.8-yellow.svg?style=flat-square"/></a>
 <a href="#"><img alt="GitHub release" src="https://img.shields.io/github/release/halo-dev/halo.svg?style=flat-square"/></a>
 <a href="#"><img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/halo-dev/halo/total.svg?style=flat-square"></a>
 <a href="#"><img alt="Docker pulls" src="https://img.shields.io/docker/pulls/ruibaby/halo?style=flat-square"></a>
 </p>
+
 ------------------------------
 ## 简介
+
 **plumemo** [plumemo]，plume（羽） + memo（备忘录）
+
 > 基于[SpringBoot](https://spring.io/projects/spring-boot/)实现零配置让系统的配置更简单，使用了[Mybatis-Plus](https://mp.baomidou.com/)快速开发框架，在不是复杂的查询操作下，无需写sql就可以快速完成接口编写。
+
 > 后台管理系统使用了vue中流行的[ant](https://panjiachen.github.io/vue-element-admin-site/#/)，另外前后交互使用了[JWT](https://jwt.io/)作为令牌，进行权限、登录校验。。
+
 > [官网](https://www.plumemo.com/) | [社区](https://www.byteblogs.com) | [QQ 交流群](https://shang.qq.com/wpa/qunwpa?idkey=4f8653da80e632ef86ca1d57ccf8751602940d1036c79b04a3a5bc668adf8864) |
+
 ## 背景
+
 > 由于plumemo 是前后端分离的，那么对于部署来说就一件很头疼的事情，主题、管理系统、后端java服务都需要配置安装配置。除此之外还是jdk、mysql、nginx配置无疑给很多小伙伴照成了一定的阻碍；为此经过几天的努力pluemeo-v1.0.0 安装脚本诞生了。
+
 ## 下载脚本
 • centos7、ubuntu16.04以上建议使用
 # 仅在centos7及ubuntu16.04及以上版本测试成功
