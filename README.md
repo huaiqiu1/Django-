@@ -1,16 +1,3 @@
-# Django-1.11
-Django学习记录
-简单图书出版社作者管理
-目前上传1.11 LTS版本代码
-正在摸索2.15特性与区别，解决静态文件问题后代码再次上传
-
-------
-
-django版本更换2.2
-完整代码已上传
-
-
-```
 <h1 align="center"><a href="https://github.com/byteblogs168/plumemo" target="_blank">plumemo</a></h1>
 > [Plumemo](https://www.plumemo.com/) 是一个轻量、易用、前后端分离的博客系统，为了解除开发人员对后端的束缚，真正做到的一个面向接口开发的博客系统。
 <p align="center">
