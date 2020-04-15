@@ -78,6 +78,7 @@ systemctl start plumemo.service
 
 service plumemo.service start
 ```
+![service](https://s1.ax1x.com/2020/04/15/JCbK9e.png)
 
 #### v1.0.0版本
 1. 添加可执行权限 ```chmod +x deploy.sh```
