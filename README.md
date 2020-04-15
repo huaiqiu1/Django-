@@ -29,10 +29,12 @@
 ```
 # 仅在centos7及ubuntu16.04及以上版本测试成功
 # 可以使用systemctl 或 service 的方式管理博客守护进程
+# 日志位置：/logs
 wget https://raw.githubusercontent.com/byteblogs168/plumemo-deploy/master/plumemo-v1.1.0.sh
 ```
 • 通用无守护进程
 ```
+# 日志目录：jar包目录下logs文件夹
 wget https://raw.githubusercontent.com/byteblogs168/plumemo-deploy/master/plumemo-v1.0.0.sh
 ```
 
